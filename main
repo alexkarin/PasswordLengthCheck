@@ -1,0 +1,44 @@
+// Program: Password Strength Checker
+
+// Function to check the strength of a password
+function checkPasswordStrength(password) {
+  // Regular expressions to match various password criteria
+  var uppercaseRegex = /[A-Z]/;
+  var lowercaseRegex = /[a-z]/;
+  var digitRegex = /[0-9]/;
+  var specialCharRegex = /[!@#$%^&*()\-=_+[\]{}|;':",.<>/?]/;
+
+  // Check password length
+  if (password.length < 8) {
+    return "Weak: Password should be at least 8 characters long.";
+  }
+
+  // Check if password contains an uppercase letter
+  if (!uppercaseRegex.test(password)) {
+    return "Weak: Password should contain at least one uppercase letter.";
+  }
+
+  // Check if password contains a lowercase letter
+  if (!lowercaseRegex.test(password)) {
+    return "Weak: Password should contain at least one lowercase letter.";
+  }
+
+  // Check if password contains a digit
+  if (!digitRegex.test(password)) {
+    return "Weak: Password should contain at least one digit.";
+  }
+
+  // Check if password contains a special character
+  if (!specialCharRegex.test(password)) {
+    return "Weak: Password should contain at least one special character.";
+  }
+
+  // If all criteria are met, password is strong
+  return "Strong: Password meets all requirements.";
+}
+
+// Test the password strength checker function
+var password = "MySecurePassword123!";
+var result = checkPasswordStrength(password);
+console.log("Password: " + password);
+console.log("Strength: " + result);
